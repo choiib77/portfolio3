@@ -67,12 +67,22 @@ a{
 
 // 애니메이션
 @mixin fadeInUp_prev{
-    transform: translateY(-100px);
-    -webkit-transform: translateY(-100px);
-    -ms-transform: translateY(-100px);
+    transform: translateY(100px);
+    -webkit-transform: translateY(100px);
+    -ms-transform: translateY(100px);
     visibility: hidden;
     opacity: 0;
-    transition: all .7s;
+    transition: all .3s;
+    transition-timing-function: linear;
+    @content;
+}
+@mixin fadeInUp{
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+    transition: all .3s;
     transition-timing-function: linear;
     @content;
 }
@@ -85,6 +95,16 @@ a{
         transform: translateY(0) translateZ(0px);
     }
 }
+
+@keyframes trY{
+    from{
+        transform: translateY(10rem);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+
 section{
     position: relative; width: 100%; left: 50%; transform: translateX(-50%);
 }
@@ -129,7 +149,7 @@ section{
         .section2{
             display: flex; justify-content: center; height: 200%;
             .shim{
-                position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; 
+                // position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; 
             }
             .sec2_video_wrap{
                 position: sticky; top: 0; width: 100%; height: 50%;
@@ -139,8 +159,23 @@ section{
             }
             .sec2_txt_wrap{
                 position: absolute; top: 0; width: 100%; display: flex; justify-content: center; flex-direction: column; align-items: center; 
+                &.ani{
+                    ul{
+                        li{
+                        }
+                    }
+                }
                 h2{
-                    font-size: clamp(2rem,10cqi,20rem);
+                    font-size: clamp(2rem,10cqi,15rem); color: #333;
+                }
+                ul{
+                    position: relative; 
+                    li{
+                        font-size: clamp(1rem,10cqi,4rem); text-align: center; font-weight: 800; line-height: 1.5; opacity: .4; transition: opacity .3s, transform 1s; color: #333; 
+                        &.opacity{
+                            opacity: 1; transition: opacity .3s;
+                        }
+                    }
                 }
             }
         }
