@@ -1,0 +1,148 @@
+// 폰트
+/* pretendar */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+@mixin font-work{
+    font-family: 'Work Sans', sans-serif;
+    @content;
+}
+@mixin font-pre{
+    font-family: 'Pretendard', sans-serif;
+    @content;
+}
+@mixin font-lebol{
+    font-family: "lemonmilk-bold",sans-serif;
+    @content;
+}
+@mixin font-lelig{
+    font-family: "lemonmilk-light",sans-serif;
+    @content;
+}
+@mixin font-leme{
+    font-family: "lemonmilk-medium",sans-serif;
+    @content;
+}
+@mixin font-lere{
+    font-family: "lemonmilk-reqular",sans-serif;
+    @content;
+}
+
+@font-face{
+    font-family: "lemonmilk-bold";
+    src:url(../font/LEMONMILK-Bold.woff2);
+}
+@font-face{
+    font-family: "lemonmilk-light";
+    src:url(../font/LEMONMILK-Light.woff2);
+}
+@font-face{
+    font-family: "lemonmilk-medium";
+    src:url(../font/LEMONMILK-Medium.woff2);
+}
+@font-face{
+    font-family: "lemonmilk-reqular";
+    src:url(../font/LEMONMILK-Regular.woff2);
+}
+
+@mixin height($h){height: $h; line-height: calc($h - 1px);}
+@mixin hidden(){opacity: 0;visibility: hidden; transition: all .3s;}
+@mixin show(){opacity: 1;visibility: visible;}
+
+// 공통
+html,body{
+    margin: 0;padding: 0; font-size: 10px; @include font-pre; box-sizing: border-box; overscroll-behavior: none; width: 100%;height: 100%;
+    
+}
+body{
+    line-height: 1.3; color: #333; background-color: #F3F3F3;
+}
+ul,ol,li {
+	list-style: none;
+}
+a{
+    font-style: normal; text-decoration: none; color: #333;
+}
+
+// 애니메이션
+@mixin fadeInUp_prev{
+    transform: translateY(-100px);
+    -webkit-transform: translateY(-100px);
+    -ms-transform: translateY(-100px);
+    visibility: hidden;
+    opacity: 0;
+    transition: all .7s;
+    transition-timing-function: linear;
+    @content;
+}
+
+@keyframes wavyUp{
+    from{
+        transform: translateY(100%) translateZ(0px);
+    }
+    to{
+        transform: translateY(0) translateZ(0px);
+    }
+}
+section{
+    position: relative; width: 100%; left: 50%; transform: translateX(-50%);
+}
+.index_wrapper{
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow-y: scroll;
+    header{
+        position: relative; 
+        .head_wrap{
+            position: fixed; top: 3rem;left: 0; right: 0;  
+            .head_infor{
+                display: flex; justify-content: flex-end; border-top: 2px solid #333; margin: 0 4rem; padding: 1rem 0; border-bottom: 1px solid #333;
+                span{
+                    font-size: 1.8rem;animation: overlayoff 1s; animation-delay: calc(.1s * var(--i));
+                }
+            }
+        }
+    }
+    .container_wide{
+        position: relative; width: 100%; height: 100%;
+        .seciton1{
+            position: relative; height: 100%; display: flex; align-items: center; justify-content: space-between; 
+            &.ani{
+                .sec1_cont{
+                    h1{
+                        span{
+
+                        }
+                    }
+                }
+            }
+            .sec1_cont{
+                width: 100%;
+                h1{
+                    text-align: center;font-size: clamp(2rem, 28cqi, 40rem); line-height: .8; overflow: hidden;
+                    span{
+                        display: inline-block; letter-spacing:-9rem ; transform: translateY(100%) translateZ(0px); transition: transform 1s; font-weight: 500; 
+                    }
+                }
+            }
+        }
+        /* sec2 비디오 */
+        .section2{
+            display: flex; justify-content: center; height: 200%;
+            .shim{
+                position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; 
+            }
+            .sec2_video_wrap{
+                position: sticky; top: 0; width: 100%; height: 50%;
+                video{
+                    position: absolute; width: 100%; height: 100%;object-fit: cover; transform: scale(.3); will-change: transform; opacity: .6; top: 0; left: 0;
+                }
+            }
+            .sec2_txt_wrap{
+                position: absolute; top: 0; width: 100%; display: flex; justify-content: center; flex-direction: column; align-items: center; 
+                h2{
+                    font-size: clamp(2rem,10cqi,20rem);
+                }
+            }
+        }
+    }
+}
