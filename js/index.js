@@ -49,7 +49,6 @@ index_wrapper.addEventListener('scroll',()=>{
     // sec2_career
     let sec2_career_top = sec2_career.getBoundingClientRect().top - 900 ;
     let sec2_skill_top = sec2_skill.getBoundingClientRect().top - 900 ;
-    console.log(sec2_skill_top)
     if(sec2_career_top <= 200){
         sec2_career.style.transform = "scale(1)";
         sec2_career.style.opacity = "1";
@@ -92,9 +91,42 @@ let projects =[
         name:'경기도장애인생산품',
         pos: 'start',
         infor:'퍼블리싱 기여도 100%/HTML/scss/jquery/php',
-        img: `img/sec03_img1.jpg`,
+        img: 'https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&q=80&w=2370&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D.jpg',
     },
-
-    
 ]
+const createProject = () => {
+    projects.forEach(project =>{
+        let panel = document.createElement('div');
+        panel.classList.add('project',`${project.pos}`);
+
+        let imageContainer = document.createElement('div');
+        imageContainer.className = `imge_container`;
+
+        let image = document.createElement('img');
+        image.classList.add('sec03_img');
+        image.src = project.img;
+
+        let projectDetail = document.createElement('div');
+        projectDetail.classList.add('sec03_detail');
+
+        let projectInfor = document.createElement('p');
+        projectInfor.innerText = project.infor;
+
+        let projectName = document.createElement('h4');
+        projectName.innerText = project.name;
+
+        let projectDate = document.createElement('span');
+        projectDate.innerText = project.date;
+
+        // imageContainer.appendChild(img);
+        panel.appendChild(imageContainer, projectDetail);
+
+        document.querySelector('.sec03_slider').appendChild(panel);
+    });
+}
+
+createProject();
+
+
+
 
