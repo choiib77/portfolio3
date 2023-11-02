@@ -32,7 +32,8 @@ html, body {
 body {
   line-height: 1.3;
   color: #333;
-  background-color: #F3F3F3;
+  background: #fff;
+  transition: background-color 250ms ease;
 }
 
 ul, ol, li {
@@ -42,7 +43,7 @@ ul, ol, li {
 a {
   font-style: normal;
   text-decoration: none;
-  color: #333;
+  color: #000;
 }
 
 @keyframes wavyUp {
@@ -75,6 +76,7 @@ section {
   width: 100%;
   height: 100%;
   overflow-y: scroll;
+  transition: background-color 250ms ease;
 }
 .index_wrapper header {
   position: relative;
@@ -126,17 +128,19 @@ section {
   transform: translateY(100%) translateZ(0px);
   transition: transform 1s;
   font-weight: 500;
+  color: #000;
 }
 .index_wrapper .container_wide .section2 {
   display: flex;
   justify-content: center;
-  height: 200%;
+  height: 300%;
 }
 .index_wrapper .container_wide .section2 .sec2_video_wrap {
   position: sticky;
   top: 0;
   width: 100%;
-  height: 50%;
+  height: 35%;
+  background-color: #ffffff;
 }
 .index_wrapper .container_wide .section2 .sec2_video_wrap video {
   position: absolute;
@@ -146,9 +150,11 @@ section {
      object-fit: cover;
   transform: scale(0.3);
   will-change: transform;
-  opacity: 0.6;
+  opacity: 1;
   top: 0;
   left: 0;
+  filter: grayscale(1);
+  transition: background-color 250ms ease;
 }
 .index_wrapper .container_wide .section2 .sec2_txt_wrap {
   position: absolute;
@@ -159,23 +165,76 @@ section {
   flex-direction: column;
   align-items: center;
 }
+.index_wrapper .container_wide .section2 .sec2_txt_wrap.ani ul {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
 .index_wrapper .container_wide .section2 .sec2_txt_wrap h2 {
-  font-size: clamp(2rem, 10cqi, 15rem);
-  color: #333;
+  font-size: clamp(2rem, 10cqi, 13rem);
+  mix-blend-mode: difference;
+  color: #fff;
+  font-family: "lemonmilk-light", sans-serif;
+  text-align: center;
+}
+.index_wrapper .container_wide .section2 .sec2_txt_wrap h2.sec2_video_txt1 {
+  margin: 10vw 0 8vw;
 }
 .index_wrapper .container_wide .section2 .sec2_txt_wrap ul {
   position: relative;
+  transform: scale(0);
+  max-width: 100rem;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 .index_wrapper .container_wide .section2 .sec2_txt_wrap ul li {
   font-size: clamp(1rem, 10cqi, 4rem);
   text-align: center;
   font-weight: 800;
   line-height: 1.5;
-  opacity: 0.4;
   transition: opacity 0.3s, transform 1s;
-  color: #333;
+  mix-blend-mode: difference;
+  z-index: 2;
+  font-family: "Pretendard", sans-serif;
+  color: #fff;
+  word-break: keep-all;
+  display: inline;
+  height: auto;
 }
-.index_wrapper .container_wide .section2 .sec2_txt_wrap ul li.opacity {
-  opacity: 1;
-  transition: opacity 0.3s;
+.index_wrapper .container_wide .section2 .sec2_txt_wrap .sec2_career {
+  transform: scale(0);
+  opacity: 0;
+  display: block;
+  transition: all 1s ease;
+}
+.index_wrapper .container_wide .section2 .sec2_txt_wrap .sec2_career ul {
+  transform: scale(1);
+}
+.index_wrapper .container_wide .section2 .sec2_txt_wrap .sec2_career ul li {
+  display: block;
+  margin-bottom: 3vw;
+}
+.index_wrapper .container_wide .section2 .sec2_txt_wrap .sec2_career ul li:last-child {
+  margin-bottom: 0;
+}
+.index_wrapper .container_wide .section2 .sec2_txt_wrap .sec2_career ul li span {
+  display: block;
+}
+.index_wrapper .container_wide .section2 .sec2_txt_wrap .sec2_skill {
+  transform: scale(0);
+  opacity: 0;
+  display: block;
+  transition: all 1s ease;
+}
+.index_wrapper .container_wide .section2 .sec2_txt_wrap .sec2_skill ul {
+  transform: scale(1);
+}
+.index_wrapper .container_wide .section2 .sec2_txt_wrap .sec2_skill ul li {
+  display: block;
+  margin-bottom: 3vw;
+}
+.index_wrapper .container_wide .section2 .sec2_txt_wrap .sec2_skill ul li:last-child {
+  margin-bottom: 0;
+}
+.index_wrapper .container_wide .section2 .sec2_txt_wrap .sec2_skill ul li span {
+  display: block;
 }/*# sourceMappingURL=style.css.map */
