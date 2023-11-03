@@ -1,3 +1,5 @@
+import {createProject , lerp} from "./project.js";
+createProject();
 document.addEventListener("DOMContentLoaded", function () {
     // 로딩시 텍스트 효과
     const sec1_cont = document.querySelectorAll(".sec1_cont h1 span");
@@ -83,50 +85,45 @@ function animateV(){
     sec2_video_ul.style.transform = `scale(${scale})`;
 }
 
-// // sec02 끝
-// sec03 project
-let projects =[
-    {
-        date:'2023.07',
-        name:'경기도장애인생산품',
-        pos: 'start',
-        infor:'퍼블리싱 기여도 100%/HTML/scss/jquery/php',
-        img: 'https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&q=80&w=2370&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D.jpg',
-    },
-]
-const createProject = () => {
-    projects.forEach(project =>{
-        let panel = document.createElement('div');
-        panel.classList.add('project',`${project.pos}`);
+// // 섹션2 끝
 
-        let imageContainer = document.createElement('div');
-        imageContainer.className = `imge_container`;
+// 섹션3 프로젝트
 
-        let image = document.createElement('img');
-        image.classList.add('sec03_img');
-        image.src = project.img;
+const sec03_sticky = document.querySelector('.sec03_sticky');
+const sec03_slider = document.querySelector('.sec03_slider');
 
-        let projectDetail = document.createElement('div');
-        projectDetail.classList.add('sec03_detail');
+let projectTargetX = 0;
+let projectCurrentX = 0;
 
-        let projectInfor = document.createElement('p');
-        projectInfor.innerText = project.infor;
-
-        let projectName = document.createElement('h4');
-        projectName.innerText = project.name;
-
-        let projectDate = document.createElement('span');
-        projectDate.innerText = project.date;
-
-        // imageContainer.appendChild(img);
-        panel.appendChild(imageContainer, projectDetail);
-
-        document.querySelector('.sec03_slider').appendChild(panel);
-    });
+let percentages = {
+    small: 700,
+    medium: 300,
+    large: 100
 }
 
-createProject();
+let limit = window.innerWidth <= 600 ? percentages.small :
+            window.innerWidth <= 1100 ? percentages.medium :
+            percentages.large
 
+function setLimit(){
+    limit = window.innerWidth <= 600 ? percentages.small :
+            window.innerWidth <= 1100 ? percentages.medium :
+            percentages.large
+}
 
+window.addEventListener('resize', setLimit);
 
+function animateProjects(){
+    let offsetTop = sec03_sticky.parentElement.offsetTop;
+    let percentage = ((index_wrapper.scrollTop - offsetTop) / window.innerHeight) * 100;
+    percentage = percentage < 0 ? 0 : percentage > limit ? limit : percentage;
+    projectTargetX = percentage;
+    projectCurrentX = lerp(projectCurrentX, projectTargetX, .1);
+    sec03_slider.style.transform = `translate3d(${-(projectCurrentX)}vw, 0 , 0)`;
+}
 
+function animate1(){
+    animateProjects();
+    requestAnimationFrame(animate1)
+}
+animate1();
