@@ -242,7 +242,7 @@ section{
                     position: relative; width: 100%; height: 100%; overflow: hidden
                     ;
                     .sec03_slider{
-                        height: 100%; display: flex; width: min-content; overflow: hidden; will-change: transform;
+                        height: 100%; display: flex; width: min-content; overflow: hidden; will-change: transform; 
                         .project{
                             position: relative; width: 25vw; height: 100%; padding: 8rem 2rem 6rem; display: flex; flex-direction: column;
                             @include res--w1100{
@@ -275,6 +275,32 @@ section{
                         }
                     }
                 }
+            }
+        }
+        /* sec4 컨택트 */
+        .section4{
+            position: relative; height: 200%; 
+            .sec04_sticky{
+                position: sticky; top: 0; width: 100%; height: 50%; display: flex; justify-content: center; align-items: center;
+                h2{
+                    font-size: clamp(2rem,20cqi,20rem); color: #fff; z-index: 1; @include font-lelig;
+                }
+                .sec04_inner{
+                    position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;
+                    .sec04_circle{
+                        position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%) scale(0); width: 150vmax; height: 150vmax; background-color: #000; border-radius: 50%;
+                    }
+                }
+            }
+        }
+        /* sec5 */
+        .section5{
+            background-color: #000; height: 100%;
+            .sec05_inner{
+                height: 50%; display: flex; justify-content: center; align-items: center; flex-direction: column; overflow: hidden;
+                p{
+                    color: #fff; will-change: transform; 
+                } 
             }
         }
     }

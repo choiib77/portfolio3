@@ -96,9 +96,9 @@ let projectTargetX = 0;
 let projectCurrentX = 0;
 
 let percentages = {
-    small: 700,
-    medium: 300,
-    large: 100
+    small: 1350,
+    medium: 640,
+    large: 260
 }
 
 let limit = window.innerWidth <= 600 ? percentages.small :
@@ -115,8 +115,8 @@ window.addEventListener('resize', setLimit);
 
 function animateProjects(){
     let offsetTop = sec03_sticky.parentElement.offsetTop;
-    let percentage = ((index_wrapper.scrollTop - offsetTop) / window.innerHeight) * 100;
-    percentage = percentage < 0 ? 0 : percentage > limit ? limit : percentage;
+    let percentage = ((index_wrapper.scrollTop - offsetTop) / window.innerHeight) * 270;
+    percentage = percentage < 0 ? 0 : percentage > limit ?  limit : percentage;
     projectTargetX = percentage;
     projectCurrentX = lerp(projectCurrentX, projectTargetX, .1);
     sec03_slider.style.transform = `translate3d(${-(projectCurrentX)}vw, 0 , 0)`;
@@ -127,3 +127,37 @@ function animate1(){
     requestAnimationFrame(animate1)
 }
 animate1();
+
+// 섹션4 
+const sec04 = document.querySelector('.section4');
+const sec04_circle = document.querySelector('.sec04_circle');
+
+function scrollCircle(){
+    let {top} = sec04.getBoundingClientRect();
+    let scaleTop = Math.abs(top);
+    let scale = (scaleTop / window.innerHeight);
+    scale = scale < 0 ? 0 : scale > 1 ? 1 : scale;
+    if(top <= 0){
+        sec04_circle.style.transform = `translate(-50%,-50%) scale(${scale})`;
+    }else{
+        sec04_circle.style.transform = `translate(-50%,-50%) scale(0)`;
+    }
+}
+
+// 섹션5
+const sec05_inner = document.querySelector('.sec05_inner');
+const sec05_left = document.querySelector('.sec05_left_txt');
+const sec05_right = document.querySelector('.sec05_right_txt');
+
+function scrollSec05(){
+    let {bottom} = sec05_inner.getBoundingClientRect();
+    let textTrans = bottom - window.innerHeight;
+    textTrans = textTrans < 0 ? 0 : textTrans 
+    sec05_left.style.transform = `translateX(${-textTrans}px)`;
+    sec05_right.style.transform = `translateX(${textTrans}px)`;
+};
+
+index_wrapper.addEventListener('scroll',()=>{
+    scrollCircle();
+    scrollSec05();
+});
