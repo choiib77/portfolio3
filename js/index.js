@@ -186,7 +186,7 @@ let projects =[
         name:'스튜디오버드',
         pos: 'mid',
         infor:'퍼블리싱 기여도 100% / HTML / scss / jqeury / php',
-        image:'img/sec03_img3.png',
+        image:'img/sec03_img3.PNG',
         link:'https://vird.co.kr/'
     },
     {
@@ -202,7 +202,7 @@ let projects =[
         name:'제이디컴포넌트',
         pos: 'start',
         infor:'퍼블리싱 기여도 100% / HTML / scss / jqeury / php',
-        image:'img/sec03_img13.png',
+        image:'img/sec03_img13.PNG',
         link:'http://jdcomponent.com/'
     },
     {
@@ -210,7 +210,7 @@ let projects =[
         name:'양현미술상',
         pos: 'mid',
         infor:'퍼블리싱 기여도 100% / HTML / scss / jqeury / php',
-        image:'img/sec03_img6.png',
+        image:'img/sec03_img6.PNG',
         link:'http://yanghyunprize.org/'
     },
     {
@@ -218,7 +218,7 @@ let projects =[
         name:'레몬헬스케어',
         pos: 'start',
         infor:'퍼블리싱 기여도 100% / HTML / CSS3 / jqeury / php',
-        image:'img/sec03_img7.png',
+        image:'img/sec03_img7.PNG',
         link:'https://www.lemonhealthcare.com/'
     },
     {
