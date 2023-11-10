@@ -96,6 +96,30 @@ section {
   font-size: 1.2rem;
   font-family: "lemonmilk-light", sans-serif;
 }
+.index_wrapper header .sec1_bubble {
+  position: fixed;
+  left: 3rem;
+  background: #fff;
+  border-radius: 0.8rem;
+  font-size: 1.4rem;
+  padding: 1rem;
+  border: 0.2rem solid #000;
+  color: #000;
+}
+.index_wrapper header .sec1_bubble::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 1rem solid transparent;
+  border-top-color: #fff;
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -1rem;
+  margin-bottom: -1rem;
+}
 .index_wrapper .container_wide {
   position: relative;
   width: 100%;
@@ -115,12 +139,14 @@ section {
 }
 .index_wrapper .container_wide .seciton1 .sec1_cont {
   width: 100%;
+  text-align: center;
 }
 .index_wrapper .container_wide .seciton1 .sec1_cont h1 {
   text-align: center;
   font-size: clamp(2rem, 28cqi, 40rem);
   line-height: 0.8;
   overflow: hidden;
+  display: inline-block;
 }
 .index_wrapper .container_wide .seciton1 .sec1_cont h1 span {
   display: inline-block;
