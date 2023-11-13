@@ -53,7 +53,7 @@ index_wrapper.addEventListener('scroll',()=>{
             item.style.opacity = "0.3";
         }
     });
-    // sec2_career
+    // sec2_career / sec2_skill_top 글자 애니메이션
     let sec2_career_top = sec2_career.getBoundingClientRect().top - 900 ;
     let sec2_skill_top = sec2_skill.getBoundingClientRect().top - 900 ;
     if(sec2_career_top <= 200){
@@ -155,7 +155,7 @@ function animate1(){
 }
 animate1();
 
-// 섹션3 project 데이터
+// 섹션3 project 
 let projects =[
     {
         date:'2023.07',
