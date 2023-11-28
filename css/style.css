@@ -78,6 +78,25 @@ section {
   overflow-y: scroll;
   transition: background-color 250ms ease;
   background-color: #fff;
+  cursor: none;
+}
+.index_wrapper .cursor {
+  position: fixed;
+  background-color: #fff;
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  overflow: hidden;
+  z-index: 100;
+  transform: translateX(-50%) translateY(-50%);
+  pointer-events: none;
+  cursor: none;
+}
+.index_wrapper .cursor.cursor1 {
+  width: 3rem;
+  height: 3rem;
+}
+.index_wrapper a, .index_wrapper button {
+  cursor: none;
 }
 .index_wrapper header {
   position: fixed;
@@ -496,7 +515,6 @@ section {
   border: none;
   border-radius: 50%;
   padding: 10px;
-  cursor: pointer;
   width: 6rem;
   height: 6rem;
   font-size: 1.5rem;

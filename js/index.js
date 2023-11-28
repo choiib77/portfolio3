@@ -10,6 +10,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// 커서
+const cursorPointed = document.querySelector('.cursor');
+const moveCursor = (e)=> {
+    const mouseY = e.clientY;
+    const mouseX = e.clientX;
+    cursorPointed.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+}
+window.addEventListener('mousemove', moveCursor);
+const tagHover = document.querySelectorAll('button');
+tagHover.forEach(element => {
+    element.addEventListener('mouseenter',()=>{
+        cursorPointed.classList.add('hover');
+    });
+})
+
 // 섹션2 
 const index_wrapper = document.querySelector('.index_wrapper');
 const video1 = document.querySelector('.section2 video')
@@ -300,6 +315,14 @@ const createProject = () => {
         panel.append(imageContainer, porjectDetailWrap);
 
         document.querySelector('.sec03_slider').appendChild(panel);
+
+        // 섹션3에 호버 했을 때 커서포인트
+        imageContainer.addEventListener('mouseenter',()=>{
+            cursorPointed.classList.add('hover');
+        })
+        imageContainer.addEventListener('mouseleave',()=>{
+            cursorPointed.classList.remove('hover');
+        })
     });
 }
 // 섹션3 프로젝트 함수 실행
