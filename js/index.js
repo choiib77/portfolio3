@@ -18,10 +18,13 @@ const moveCursor = (e)=> {
     cursorPointed.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
 }
 window.addEventListener('mousemove', moveCursor);
-const tagHover = document.querySelectorAll('button');
+const tagHover = document.querySelectorAll('a');
 tagHover.forEach(element => {
     element.addEventListener('mouseenter',()=>{
         cursorPointed.classList.add('hover');
+    });
+    element.addEventListener('mouseleave',()=>{
+        cursorPointed.classList.remove('hover');
     });
 })
 
