@@ -65,7 +65,7 @@ index_wrapper.addEventListener('scroll',()=>{
         if (itemTop <= middleOfViewport + item.clientHeight && itemBottom >= middleOfViewport) {
             item.style.opacity = "1";
         } else {
-            item.style.opacity = "0.3";
+            item.style.opacity = "0.15";
         }
     });
     // sec2_career / sec2_skill_top 글자 애니메이션
@@ -114,6 +114,7 @@ function animateV(){
     let scale = 1 - ((bottom - window.innerHeight) * .0005)
     scale = scale < .2 ? .2 : scale > .97 ? 1 : scale;
     video1.style.transform = `scale(${scale})`;
+
     // about 텍스트 좌우 
     let textTrans = bottom - window.innerHeight;
     textTrans = textTrans < 0 ? 0 : textTrans;
@@ -169,6 +170,7 @@ function animate1(){
     requestAnimationFrame(animate1)
 }
 animate1();
+
 
 // 섹션3 project 
 let projects =[
@@ -283,6 +285,9 @@ const createProject = () => {
         let panel = document.createElement('div');
         panel.classList.add('project',`${project.pos}`);
 
+        let project_box = document.createElement('div');
+        project_box.classList.add('project_box');
+
         let imageContainer = document.createElement('a');
         imageContainer.className = 'imge_container';
         imageContainer.href = project.link;
@@ -311,8 +316,9 @@ const createProject = () => {
         porjectDetailWrap.append(projectDetail,projectInfor);
         projectDetail.append(projectDate,projectName)
 
-        imageContainer.appendChild(image);
-        panel.append(imageContainer, porjectDetailWrap);
+        imageContainer.append(image);
+        project_box.append(imageContainer, porjectDetailWrap);
+        panel.append(project_box);
 
         document.querySelector('.sec03_slider').appendChild(panel);
 
@@ -328,6 +334,59 @@ const createProject = () => {
 // 섹션3 프로젝트 함수 실행
 createProject();
 
+// 섹션3 프로젝트 마우스 움직이면 컨텐츠 영역도 같이 이동
+const images = [...document.querySelectorAll(".sec03_slider .project_box")];
+
+const lerp2 = (a, b, n) => (1 - n) * a + n * b;
+const map = (x, a, b, c, d) => ((x - a) * (d - c)) / (b - a) + c;
+
+const getMousePosition = e => {
+    let posX = e.clientX;
+    let posY = e.clientY;
+
+    return {
+        x: posX,
+        y: posY
+    };
+};
+
+let mousePos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+window.addEventListener("mousemove", e => (mousePos = getMousePosition(e)));
+
+gsap.fromTo('img', {
+    scale: 1.2,
+    autoAlpha: 0,
+    ease: 'power3.inOut',
+}, {
+    scale: 1,
+    autoAlpha: 1,
+    stagger: 0.1,
+    duration: 2.5,
+})
+
+images.forEach(img => {
+    let values = { x: 0, y: 0 };
+    const xStart = gsap.utils.random(16, 64);
+    const yStart = gsap.utils.random(-16, 64);
+
+    const render = () => {
+        values.x = lerp2(
+        values.x,
+        map(mousePos.x, 0, window.innerWidth, -xStart, xStart),
+        0.07
+        );
+
+        values.y = lerp2(
+        values.y,
+        map(mousePos.y, 0, window.innerHeight, -yStart, yStart),
+        0.07
+        );
+        gsap.set(img, { x: values.x, y: values.y });
+
+        requestAnimationFrame(render);
+    };
+        render();
+});
 
 // 섹션4 
 const sec04 = document.querySelector('.section4');
