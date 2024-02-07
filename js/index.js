@@ -12,10 +12,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // 커서
 const cursorPointed = document.querySelector('.cursor');
+let mouseMoved = false;
 const moveCursor = (e)=> {
     const mouseY = e.clientY;
     const mouseX = e.clientX;
     cursorPointed.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+    if(!mouseMoved){
+        cursorPointed.classList.add('block');
+        mouseMoved = true;
+    }
 }
 window.addEventListener('mousemove', moveCursor);
 const tagHover = document.querySelectorAll('a');
@@ -27,6 +32,19 @@ tagHover.forEach(element => {
         cursorPointed.classList.remove('hover');
     });
 })
+
+// 섹션1 버블
+document.addEventListener("mousemove", parallax);
+function parallax(e) {
+  this.querySelectorAll('.bubble').forEach(bubble => {
+    const speed = bubble.getAttribute('data-speed');
+    
+    const x = (window.innerWidth - e.pageX * speed)/100;
+    const y = (window.innerHeight - e.pageY * speed)/100;
+    
+    bubble.style.transform = `translateX(${x}px) translateY(${y}px)`;
+  })
+}
 
 // 섹션2 
 const index_wrapper = document.querySelector('.index_wrapper');
@@ -58,8 +76,11 @@ index_wrapper.addEventListener('scroll',()=>{
     }else{
         document.querySelector('.sec2_txt_wrap').classList.remove("ani");
     }
-    
-    // 스크롤시 색상 진해짐
+    // 섹션2 높이 값 구하기
+    // let sec2_txt_wrap  = document.querySelector('.sec2_txt_wrap');
+    // let sec2Height = sec2_txt_wrap.offsetHeight;
+    // document.querySelector('.section2').style.height = (sec2Height + 100)+ 'px'
+    // 섹션2 스크롤시 글자 색상 진해짐
     sec2_txt_wrap_li.forEach(function(item, index) {
         const itemTop = item.getBoundingClientRect().top + window.scrollY;
         // const itemBottom = itemTop + item.clientHeight;
@@ -87,6 +108,26 @@ index_wrapper.addEventListener('scroll',()=>{
     }else{
         sec2_skill.style.transform = "scale(0)";
         sec2_skill.style.opacity = "0";
+    }
+
+    // 섹션3 프로젝트 영역 도달 시 로드 애니메이션
+    let section3 = document.querySelector('.section3');
+    let sec03_load = document.querySelectorAll('.sec03_load');
+    let sec03_top = section3.getBoundingClientRect().top - 900;
+    if(sec03_top <= 200){
+        sec03_sticky.classList.add('ani')
+        sec03_load.forEach((load, index) => {
+            setTimeout(function () {
+                load.classList.add('ani');
+                // load.style.transform = "scale(1, 0)";
+                // load.style.scale = "none";
+                // load.style.lotate = "none";
+
+            }, index === 1 ? index * 300 : index * 100); 
+            setTimeout(function () {
+                load.style.height = '0';
+            }, 2800); 
+        });
     }
 });
 // 탑버튼 노출 비노출
@@ -120,7 +161,7 @@ function animateV(){
 
     // about 텍스트 좌우 
     let textTrans = bottom - window.innerHeight;
-    textTrans = textTrans < 0 ? 0 : textTrans;
+    textTrans = textTrans < 50 ? 0 : textTrans;
     sec2_text1.style.transform = `translateX(${-textTrans}px)`;
     // about 
     let scale2 = 1 - ((bottom - window.innerHeight) * .0005)
@@ -138,7 +179,7 @@ let projectTargetX = 0;
 let projectCurrentX = 0;
 // 화면 너비값에 따라 너비 지정
 let percentages = {
-    small: 1350,
+    small: 1100,
     medium: 580,
     large: 260
 }
@@ -394,6 +435,7 @@ images.forEach(img => {
 // 섹션4 
 const sec04 = document.querySelector('.section4');
 const sec04_circle = document.querySelector('.sec04_circle');
+const sec04_txt = document.querySelector('.sec04_sticky h2');
 // 섹션4 텍스트 배경 크기
 function scrollCircle(){
     let {top} = sec04.getBoundingClientRect();
@@ -405,8 +447,10 @@ function scrollCircle(){
 
     if(top <= 0){
         sec04_circle.style.transform = `translate(-50%,-50%) scale(${scale})`;
+        sec04_txt.classList.add('ani');
     }else{
         sec04_circle.style.transform = `translate(-50%,-50%) scale(0)`;
+        sec04_txt.classList.remove('ani');
     }
     if(sec04_top<=0  && scale ==1){
         index_wrapper.style.backgroundColor = `#000`;
@@ -439,8 +483,8 @@ index_wrapper.addEventListener('scroll',()=>{
 // 섹션6
 
 // 텍스트 애니메이션
-const sec06_cont_span = document.querySelectorAll('.sec6_cont h1 span');
-const sec06_cont = document.querySelector('.sec6_cont');
+const sec06_cont_span = document.querySelectorAll('.sec06_cont h1 span');
+const sec06_cont = document.querySelector('.sec06_cont');
 
 function scrollSec06 (){
     let {top} = sec06_cont.getBoundingClientRect();
@@ -453,12 +497,14 @@ function scrollSec06 (){
                 textElement.style.transform = "translateY(0) translateZ(0px)";
             }, index * 150); 
         });
+        // sec06_cont.classList.add('ani')
     }else{
         sec06_cont_span.forEach((textElement, index) => {
             setTimeout(function () {
                 textElement.style.transform = "translateY(100%) translateZ(0px)";
             }, index * 150); 
         });
+        // sec06_cont.classList.remove('ani')
     }
 }
 

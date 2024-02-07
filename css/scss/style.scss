@@ -5,6 +5,13 @@
 
 
 // 리사이징
+$w1300:1300px;
+@mixin res--w1300{
+    @media screen and (max-width: #{$w1300}){
+		@content;
+	}
+}
+
 $w1100:1100px;
 @mixin res--w1100{
     @media screen and (max-width: #{$w1100}){
@@ -12,9 +19,23 @@ $w1100:1100px;
 	}
 }
 
+$w876:876px;
+@mixin res--w876{
+    @media screen and (max-width: #{$w876}){
+		@content;
+	}
+}
+
 $w600:600px;
 @mixin res--w600{
     @media screen and (max-width: #{$w600}){
+		@content;
+	}
+}
+
+$w480:480px;
+@mixin res--w480{
+    @media screen and (max-width: #{$w480}){
 		@content;
 	}
 }
@@ -121,6 +142,32 @@ a{
     }
 }
 
+// 섹션6 애니메이션
+@keyframes revealLTR {
+    0%{
+        width: 0;
+        left: 0;
+    }
+    65%{
+        width: 100%;
+        left: 0;
+    }
+    100% {
+        width: 0;
+        left: 100%;
+    }
+}
+
+
+@keyframes textHidden {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 :root{
     --color0:rgba(0, 0, 0,.15);
 }
@@ -132,14 +179,17 @@ section{
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow-y: scroll; transition: background-color 250ms ease; background-color: #fff; cursor: none;
     .cursor{
         position: fixed;background-color: #fff; border-radius: 50%; mix-blend-mode: difference;  overflow: hidden; z-index: 100;transform: translateX(-50%) translateY(-50%);
-        pointer-events: none; cursor: none;
+        pointer-events: none; cursor: none; display: none;
+        &.block{
+            display: block;
+        }
         &.cursor1{
             width: 3rem; height: 3rem; transition: width .3s, height .3s;
         }
         &.hover{
-            width: 6rem; height: 6rem; transition: width .3s, height .3s; backdrop-filter:blur(.6rem) brightness(150%);
+            width: 7rem; height: 7rem; transition: width .3s, height .3s; backdrop-filter:blur(.6rem) brightness(150%);
             &::after{
-                content: 'VIEW';position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 1.8rem; @include font-leme;
+                content: 'CLICK';position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 1.8rem; @include font-leme;
             }
         }
     }
@@ -148,9 +198,15 @@ section{
     }
     header{
         position: fixed; top: 3rem; right: 4rem; display: inline-block; z-index: 100;  mix-blend-mode: difference; color: #fff; background-color: #000; border-radius: 2rem; padding: .5rem .5rem; border: 1px solid #fff;
+        @include res--w876{
+            top: 2rem; right: 2rem;
+        }
         .head_wrap{
             span{
                 font-size: 1.2rem; @include font-lelig;
+                @include res--w600{
+                    font-size: 1rem;
+                }
             }
         }
         .sec1_bubble {
@@ -164,7 +220,7 @@ section{
     .container_wide{
         position: relative; width: 100%; height: 100%;
         .seciton1{
-            position: relative; height: 100%; display: flex; align-items: center; justify-content: space-between; 
+            position: relative; height: 100%; display: flex; align-items: center; justify-content: space-between;  
             &.ani{
                 .sec1_cont{
                     h1{
@@ -174,12 +230,76 @@ section{
                     }
                 }
             }
+            .sec1_keyword{
+                position: absolute; width: 100%; height: 100%; z-index: 10; mix-blend-mode: difference;
+                .bubble{
+                    position:  absolute; background: #fff; border-radius: .8rem;  padding:1rem;  color: #000; font-size: 1.4rem; font-weight: 800; opacity: 0; animation: textHidden 0.1s 1.7s forwards; transition: opactiy .3s;
+                    @include res--w1100{
+                        font-size: 1.2rem; padding: .8rem;
+                    }
+                    @include res--w600{
+                        font-size: 1rem; padding: .5rem;
+                    }
+                    &::after{
+                        content: ''; position: absolute;bottom: 0;left: 50%;width: 0; height: 0; border: 1rem solid transparent; border-top-color: #fff;border-bottom: 0;border-left: 0;margin-left: -1rem;margin-bottom: -1rem; 
+                    }
+                    &.bub1{
+                        top: 25%;right: 30%; 
+                        @include res--w1300{
+                            top: 14vw; right: 15vw;
+                        }
+                        @include res--w600{
+                            top: 4vw; right: 11vw;
+                        }
+                    }
+                    &.bub2{
+                        bottom: 12%;left: 16%; 
+                        &::after{
+                            top: 0;left: 50%;border: 1rem solid transparent;border-bottom-color: #fff;border-top: 0;border-right: 0;margin-left: -1rem;margin-top: -1rem;
+                        }
+                    }
+                    &.bub3{
+                        top: 35%;left: 12%; 
+                        &::after{
+                            bottom: 0;left: 50%;border: 1rem solid transparent;border-top-color: #fff;border-bottom: 0;border-right: 0;margin-left: -1rem;margin-bottom: -1rem;
+                        }
+                    }
+                    &.bub4{
+                        bottom: 25%;right: 15%; 
+                        &::after{
+                            top: 0;left: 50%;border: 1rem solid transparent;border-bottom-color: #fff;border-top: 0;border-left: 0;margin-left: -1rem;margin-top: -1rem;
+                        }
+                    }
+                    &.bub5{
+                        top: 20%;right: 50%; 
+                        &::after{
+                            bottom: 0;left: 50%;border: 1rem solid transparent;border-top-color: #fff;border-bottom: 0;margin-left: -1rem;margin-bottom: -1rem;
+                        }
+                    }
+                    &.bub6{
+                        bottom: 20%;right: 50%; 
+                        &::after{
+                            top: 0;left: 50%;border: 1rem solid transparent;border-bottom-color: #fff;border-top: 0;margin-left: -1rem;margin-top: -1rem;
+                        }
+                    }
+                }
+            }
             .sec1_cont{
-                width: 100%; text-align: center;
+                width: 100%; text-align: center; background-color: #fff;
+                
                 h1{
-                    text-align: center;font-size: clamp(2rem, 28cqi, 40rem); line-height: .8; overflow: hidden; display: inline-block; 
+                    text-align: center;font-size: clamp(2rem, 28cqi, 40rem); line-height: .8; overflow: hidden; display: inline-block; mix-blend-mode: difference;
                     span{
-                        display: inline-block; letter-spacing:-9rem ; transform: translateY(100%) translateZ(0px); transition: transform 1s; font-weight: 500; color: #000;  mix-blend-mode: difference;
+                        display: inline-block; letter-spacing:-9rem ; transform: translateY(100%) translateZ(0px); transition: transform 1s; font-weight: 500; color: #fff;  
+                        @include res--w1300{
+                            letter-spacing:-6rem ;
+                        }
+                        @include res--w876{
+                            letter-spacing: -4rem; font-size: clamp(2rem, 30cqi, 40rem);
+                        }
+                        @include res--w600{
+                            letter-spacing: -2rem;
+                        }
                     }
                     
                 }
@@ -188,9 +308,43 @@ section{
         }
         /* sec2 비디오 */
         .section2{
-            display: flex; justify-content: center; height: 300%;
+            display: flex; justify-content: center; height: 300%; z-index: 10;
+            @include res--w1300{
+                height: 265%;
+            }
+            @include res--w1100{
+                height: 240%;
+            }
+           
+            @include res--w480{
+                height: 175%;
+            }
+            @media (min-height:800px)and (max-width:1000px){
+                height: 250%;
+            }
+            @media(max-height:700px) and (max-width:1100px){
+                height: 290%;
+            }
+            @media (min-height:800px)and (max-width:760px){
+                height: 270%;
+            }
+            @include res--w600{
+                height: 190%;
+            }
+            @media (max-height:700px) and (max-width:600px){
+                height:285%;
+            }
             .sec2_video_wrap{
                 position: sticky; top: 0; width: 100%; height: 35%; background-color: #ffffff;
+                @include res--w1100{
+                    height: 42%;
+                }
+                @include res--w600{
+                    height: 55%;
+                }
+                @media(max-height:700px) and (max-width:1100px){
+                    height: 35%;
+                }
                 video{
                     position: absolute; width: 100%; height: 100%;object-fit: cover; transform: scale(.3); will-change: transform; opacity: 1; top: 0; left: 0;  filter: grayscale(1); transition: background-color 250ms ease;
                 }
@@ -205,16 +359,43 @@ section{
                     }
                 }
                 h2{
-                    font-size: clamp(2rem,10cqi,13rem); mix-blend-mode: difference; color: #fff; @include font-lelig; text-align: center;
+                    font-size: 13rem; mix-blend-mode: difference; color: #fff; @include font-lelig; text-align: center;
                     &.sec2_video_txt1{
                         margin: 10vw 0 8vw;
+                    }
+                    @include res--w1300{
+                        font-size: 11rem;
+                    }
+                    @include res--w1100{
+                        font-size: 9rem;
+                    }
+                    @include res--w876{
+                        font-size: 7rem;
+                    }
+                    @include res--w600{
+                        font-size: 6rem;
                     }
                 }
                 ul{
                     position: relative; transform: scale(0); max-width: 100rem; opacity: 0; transition: opacity .3s; padding: 0;
+                    @include res--w1100{
+                        padding: 0 5rem; text-align: left;
+                    }
+                    @include res--w480{
+                        padding: 0 3rem;
+                    }
                     li{
-                        font-size: clamp(1rem,10cqi,4rem); text-align: center; font-weight: 800; line-height: 1.5; transition: opacity .3s, transform 1s; mix-blend-mode: difference;  z-index: 2; @include font-pre; color: #fff;
+                        font-size: 4rem; text-align: center; font-weight: 800; line-height: 1.5; transition: opacity .3s, transform 1s; mix-blend-mode: difference;  z-index: 2; @include font-pre; color: #fff;
                         word-break: keep-all; display: inline; height: auto;
+                        @include res--w1300{
+                            font-size: 3.5rem;
+                        }
+                        @include res--w876{
+                            font-size: 3rem;
+                        }
+                        @include res--w600{
+                            font-size: 2.5rem;
+                        }
                     }
                 }
                 .sec2_career{
@@ -251,12 +432,48 @@ section{
         }
         /* sec3 프로젝트 */
         .section3{
-            position: relative; height: 200%; 
+            position: relative; height: 200%;
             @include res--w1100{
                 height: 400%;
             }
             @include res--w600{
                 height: 800%;
+            }
+
+            .sec03_load_wrap{
+                .sec03_load{
+                    position: absolute; top: 0; left: 0; z-index: 100;  /*background-color: #000; transition: transform 1.5s cubic-bezier(1, 0.885, 0.32, 1);transform-origin:bottom; */
+                    // &::before{
+                    //     content: '';position: absolute; top: -75%; left: 0;width: 100%; height: 75%; background-color: #fff; transform-origin:bottom; 
+                    // }
+                    &.ani{
+                        width: 100%;height: 50vh;
+                        &::before,&::after{
+                            content: '';position: absolute;top: 0;right: 0; z-index: 10; height: 100%;
+                        }
+                        &:nth-child(2){
+                            top: 25%;
+                        }
+                        &:nth-child(3){
+                            top: 50%;
+                        }
+                        &:nth-child(4){
+                            top: 75%;
+                        }
+                        &::before{
+                            background-color: #fff; animation: revealLTR 1s ease;
+                        }
+                        &::after{
+                            background-color: #000;animation-delay: .5s; animation: revealLTR 1s .6s ease;
+                        }
+                    }
+                    // &:nth-child(2){
+                    //     left: 32.333%;width: 35.333%;
+                    // }
+                    // &:nth-child(3){
+                    //     left: 66.666%;
+                    // }
+                }
             }
             
             .sec03_sticky{
@@ -284,7 +501,10 @@ section{
                 transparent 1px,
                 transparent 1px
             );
-            background-size: 100% 25.1%;
+            background-size: 100% 25.1%; opacity: 0;
+            &.ani{
+                animation: textHidden 0.1s 1.7s forwards; 
+            }
                 @include res--w1100{
                     height: 25%;
                 }
@@ -292,8 +512,7 @@ section{
                     height: 12.5%;
                 }
                 .sec03_inner{
-                    position: relative; width: 100%; height: 100%; overflow: hidden
-                    ;
+                    position: relative; width: 100%; height: 100%; overflow: hidden; 
                     .sec03_slider{
                         height: 100%; display: flex; width: min-content; overflow: hidden; will-change: transform; padding:0 0 0 6rem;
                         @include res--w1100{
@@ -305,10 +524,10 @@ section{
                                 padding: 4rem 2rem 6rem;
                             }
                             @include res--w1100{
-                                width: 50vw;
+                                width: 47vw;
                             }
                             @include res--w600{
-                                width: 100vw;
+                                width: 80vw;
                             }
                         }
                         .project_box{
@@ -365,7 +584,22 @@ section{
             .sec04_sticky{
                 position: sticky; top: 0; width: 100%; height: 50%; display: flex; justify-content: center; align-items: center;
                 h2{
-                    font-size: clamp(1.5rem,17cqi,20rem); color: #fff; z-index: 1; @include font-lelig;
+                    font-size: clamp(1.5rem,17cqi,40rem); color: #fff; z-index: 1; @include font-lelig;
+                    &.ani{
+                        font-size: clamp(1.5rem,17cqi,13rem); 
+                        @include res--w1300{
+                            font-size: 11rem;
+                        }
+                        @include res--w1100{
+                            font-size: 9rem;
+                        }
+                        @include res--w876{
+                            font-size: 7rem;
+                        }
+                        @include res--w600{
+                            font-size: 6rem;
+                        }transition: all .6s ease-in;
+                    }
                 }
                 .sec04_inner{
                     position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;
@@ -392,13 +626,29 @@ section{
             }
         }
 
+
+
         /* sec6 */
         .section6{
             position: relative;  display: flex; align-items: center; justify-content: space-between; background-color: #000; padding: 0 0 2rem;
-            .sec6_cont{
+            .sec06_cont{
                 width: 100%; mix-blend-mode: difference;
+                // &.ani{
+                //     h1{
+                //         animation: textHidden 0.1s 1.1s forwards;
+                //     }
+                //     &::before,&::after{
+                //         content: '';position: absolute;top: 0;right: 0;height: 100%; z-index: 10;
+                //     }
+                //     &::before{
+                //         background-color: #fff; animation: revealLTR 1s ease;
+                //     }
+                //     &::after{
+                //         background-color: #000;animation-delay: .5s; animation: revealLTR 1s .6s ease;
+                //     }
+                // }
                 h1{
-                    text-align: center;font-size: clamp(2rem, 15cqi, 30rem); line-height: .9; overflow: hidden; margin: 0; display: flex; justify-content: center;
+                    text-align: center;font-size: clamp(2rem, 15cqi, 30rem); line-height: .9; overflow: hidden; margin: 0; display: flex; justify-content: center; 
                     span{
                         display: inline-block;  transition: transform .4s; font-weight: 500;  color: #fff; @include font-lelig; transform: translateY(100%) translateZ(0px);
                     }
@@ -409,9 +659,24 @@ section{
     footer{
         position: relative;
         .go_top{
-            position: fixed;  right: 4rem; bottom: 3rem; background-color: #000; color: #fff; transition: all .3s ease-in-out; text-transform: uppercase;  z-index: 100;  mix-blend-mode: difference;
+            position: fixed;  right: 4rem; bottom: -10rem; background-color: #000; color: #fff; transition: all .3s ease-in-out; text-transform: uppercase;  z-index: 100;  mix-blend-mode: difference; border-radius: 50%;
+            @include res--w1300{
+                right: 3rem;
+            }
+            @include res--w600{
+                right: 2rem;
+            }
             #topButton{
-                mix-blend-mode: difference; border: none;border-radius: 50%; padding: 10px;  width: 6rem; height: 6rem; font-size: 1.5rem;  @include font-leme;
+                mix-blend-mode: difference; border: none; padding: 10px;  width: 6rem; height: 6rem; font-size: 1.5rem;  @include font-leme; border-radius: 50%;
+                @include res--w1300{
+                    width: 5.5rem; height: 5.5rem; font-size: 1.4rem;
+                }
+                @include res--w876{
+                    width: 5rem; height: 5rem; font-size: 1.3rem;
+                }
+                @include res--w600{
+                    width: 4.5rem; height: 4.5rem; 
+                }
             }
         }
         .footer_bottom{
