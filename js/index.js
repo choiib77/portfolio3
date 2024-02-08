@@ -119,17 +119,15 @@ index_wrapper.addEventListener('scroll',()=>{
         sec03_load.forEach((load, index) => {
             setTimeout(function () {
                 load.classList.add('ani');
-                // load.style.transform = "scale(1, 0)";
-                // load.style.scale = "none";
-                // load.style.lotate = "none";
-
             }, index === 1 ? index * 300 : index * 100); 
             setTimeout(function () {
                 load.style.height = '0';
             }, 2800); 
         });
     }
+    console.log(section3.getBoundingClientRect().top)
 });
+
 // 탑버튼 노출 비노출
 index_wrapper.addEventListener("wheel",function(e){
     let scrollUp = e.deltaY;
@@ -292,11 +290,11 @@ let projects =[
     },
     {
         date:'2023.02',
-        name:'벨루나',
+        name:'타임교육',
         pos: 'mid',
         infor:'퍼블리싱 기여도 100% / HTML / scss / jqeury / php',
-        image:'img/sec03_img9.jpg',
-        link:'https://beluna.kr/'
+        image:'img/sec03_img14.png',
+        link:'https://facto-mall.com/'
     },
     {
         date:'2023.02',
