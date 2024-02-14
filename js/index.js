@@ -293,7 +293,7 @@ let projects =[
         name:'타임교육',
         pos: 'mid',
         infor:'퍼블리싱 기여도 100% / HTML / scss / jqeury / php',
-        image:'img/sec03_img14.png',
+        image:'img/sec03_img14.PNG',
         link:'https://facto-mall.com/'
     },
     {

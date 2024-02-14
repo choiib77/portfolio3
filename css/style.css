@@ -953,6 +953,7 @@ section {
 .index_wrapper footer .footer_bottom {
   position: relative;
   display: flex;
+  justify-content: space-between;
   padding: 5rem 2rem;
   align-items: center;
 }
