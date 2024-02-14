@@ -89,7 +89,7 @@ index_wrapper.addEventListener('scroll',()=>{
         if (itemTop <= middleOfViewport + item.clientHeight && itemBottom >= middleOfViewport) {
             item.style.opacity = "1";
         } else {
-            item.style.opacity = "0.15";
+            item.style.opacity = "0.25";
         }
     });
     // sec2_career / sec2_skill_top 글자 애니메이션
