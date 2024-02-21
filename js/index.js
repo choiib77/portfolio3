@@ -113,7 +113,7 @@ index_wrapper.addEventListener('scroll',()=>{
     // 섹션3 프로젝트 영역 도달 시 로드 애니메이션
     let section3 = document.querySelector('.section3');
     let sec03_load = document.querySelectorAll('.sec03_load');
-    let sec03_top = section3.getBoundingClientRect().top - 900;
+    let sec03_top = section3.getBoundingClientRect().top - 700;
     if(sec03_top <= 200){
         sec03_sticky.classList.add('ani')
         sec03_load.forEach((load, index) => {
@@ -125,7 +125,6 @@ index_wrapper.addEventListener('scroll',()=>{
             }, 2800); 
         });
     }
-    console.log(section3.getBoundingClientRect().top)
 });
 
 // 탑버튼 노출 비노출
