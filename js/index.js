@@ -57,8 +57,10 @@ const sec2_career = document.querySelector('.sec2_career');
 // 탑버튼
 let lastScrollPos = window.pageYOffset;
 let topButton = document.querySelector('.go_top');
+
+
 // 스크롤 애니
-index_wrapper.addEventListener('scroll',()=>{
+let index_scroll = () => {
     let scrollY = index_wrapper.scrollTop;
     let innerHeight = window.innerHeight;
     let scrollHeight = document.body.offsetHeight;
@@ -71,9 +73,9 @@ index_wrapper.addEventListener('scroll',()=>{
     // index_wrapper 안의 위치값기준으로 스크롤값 구함
     const sec2_video_wrap_s = sec2_video_wrap.getBoundingClientRect();
     const sec2_video_wrap_s2 = sec2_video_wrap_s.top;
-    if(sec2_video_wrap_s2 <= 130){
+    if (sec2_video_wrap_s2 <= 130) {
         document.querySelector('.sec2_txt_wrap').classList.add("ani");
-    }else{
+    } else {
         document.querySelector('.sec2_txt_wrap').classList.remove("ani");
     }
     // 섹션2 높이 값 구하기
@@ -81,11 +83,11 @@ index_wrapper.addEventListener('scroll',()=>{
     // let sec2Height = sec2_txt_wrap.offsetHeight;
     // document.querySelector('.section2').style.height = (sec2Height + 100)+ 'px'
     // 섹션2 스크롤시 글자 색상 진해짐
-    sec2_txt_wrap_li.forEach(function(item, index) {
+    sec2_txt_wrap_li.forEach(function (item, index) {
         const itemTop = item.getBoundingClientRect().top + window.scrollY;
         // const itemBottom = itemTop + item.clientHeight;
         const itemBottom = item.getBoundingClientRect().bottom + window.scrollY;
-        
+
         if (itemTop <= middleOfViewport + item.clientHeight && itemBottom >= middleOfViewport) {
             item.style.opacity = "1";
         } else {
@@ -93,19 +95,19 @@ index_wrapper.addEventListener('scroll',()=>{
         }
     });
     // sec2_career / sec2_skill_top 글자 애니메이션
-    let sec2_career_top = sec2_career.getBoundingClientRect().top - 900 ;
-    let sec2_skill_top = sec2_skill.getBoundingClientRect().top - 900 ;
-    if(sec2_career_top <= 200){
+    let sec2_career_top = sec2_career.getBoundingClientRect().top - 900;
+    let sec2_skill_top = sec2_skill.getBoundingClientRect().top - 900;
+    if (sec2_career_top <= 200) {
         sec2_career.style.transform = "scale(1)";
         sec2_career.style.opacity = "1";
-    }else{
+    } else {
         sec2_career.style.transform = "scale(0)";
         sec2_career.style.opacity = "0";
     }
-    if(sec2_skill_top <= 500){
+    if (sec2_skill_top <= 500) {
         sec2_skill.style.transform = "scale(1)";
         sec2_skill.style.opacity = "1";
-    }else{
+    } else {
         sec2_skill.style.transform = "scale(0)";
         sec2_skill.style.opacity = "0";
     }
@@ -114,18 +116,22 @@ index_wrapper.addEventListener('scroll',()=>{
     let section3 = document.querySelector('.section3');
     let sec03_load = document.querySelectorAll('.sec03_load');
     let sec03_top = section3.getBoundingClientRect().top - 700;
-    if(sec03_top <= 200){
+    if (sec03_top <= -100) {
         sec03_sticky.classList.add('ani')
         sec03_load.forEach((load, index) => {
             setTimeout(function () {
                 load.classList.add('ani');
-            }, index === 1 ? index * 300 : index * 100); 
+            }, index === 1 ? index * 300 : index * 100);
             setTimeout(function () {
                 load.style.height = '0';
-            }, 2800); 
+            }, 2800);
         });
     }
-});
+};
+
+
+// 스크롤 함수
+index_wrapper.addEventListener('scroll', index_scroll);
 
 // 탑버튼 노출 비노출
 index_wrapper.addEventListener("wheel",function(e){
