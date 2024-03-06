@@ -10,6 +10,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// 리사이징시 높이값 적용
+window.addEventListener('load', function () {
+    sec2_height();
+
+    window.addEventListener('resize', function () {
+        sec2_height();
+    });
+});
+
+function sec2_height() {
+    var sec2Height = document.querySelector('.sec2_txt_wrap').offsetHeight;
+    document.querySelector('.section2').style.height = sec2Height + 100 + 'px';
+}
+
+
 // 커서
 const cursorPointed = document.querySelector('.cursor');
 let mouseMoved = false;
