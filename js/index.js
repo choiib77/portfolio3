@@ -302,17 +302,9 @@ let projects =[
         link:'https://facto-mall.com/'
     },
     {
-        date:'2023.02',
-        name:'더미디어컨시어지',
-        pos: 'end',
-        infor:'퍼블리싱 기여도 100% / HTML / CSS3 / jqeury / php',
-        image:'img/sec03_img10.png',
-        link:'http://themediaconcierge.co.kr/'
-    },
-    {
         date:'2023.01',
         name:'줄앤줄',
-        pos: 'start',
+        pos: 'end',
         infor:'퍼블리싱 기여도 100% / HTML / scss / jqeury / php',
         image:'img/sec03_img11.jpg',
         link:'https://zoolnzool.com/'
@@ -320,11 +312,19 @@ let projects =[
     {
         date:'2022.06',
         name:'서울IR네트워크',
-        pos: 'end',
+        pos: 'start',
         infor:'퍼블리싱 기여도 100% / HTML / CSS3 / jqeury / php',
         image:'img/sec03_img15.jpg',
         link:'http://www.seoulir.co.kr/'
-    }
+    },
+    {
+        date:'2022.05',
+        name:'대성산업',
+        pos: 'mid',
+        infor:'퍼블리싱 기여도 100% / HTML / CSS3 / jqeury / php',
+        image:'img/sec03_img16.jpg',
+        link:'http://daesungfoam.com/'
+    },
 ]
 // 섹션3 프로젝트 태그 삽입
 const createProject = () => {
