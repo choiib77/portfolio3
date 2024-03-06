@@ -5,6 +5,13 @@
 
 
 // 리사이징
+$w1380:1380px;
+@mixin res--w1380{
+    @media screen and (max-width: #{$w1380}){
+		@content;
+	}
+}
+
 $w1300:1300px;
 @mixin res--w1300{
     @media screen and (max-width: #{$w1300}){
@@ -223,12 +230,12 @@ section{
                     background-color: #000;animation-delay: .5s; animation: revealLTR 1s .6s ease;
                 }
             }
-            // &:nth-child(2){
-            //     left: 32.333%;width: 35.333%;
-            // }
-            // &:nth-child(3){
-            //     left: 66.666%;
-            // }
+            &:nth-child(2){
+                left: 32.333%;width: 35.333%;
+            }
+            &:nth-child(3){
+                left: 66.666%;
+            }
         }
     }
     a,button{
@@ -401,7 +408,7 @@ section{
                     &.sec2_video_txt1{
                         margin: 10vw 0 8vw;
                     }
-                    @include res--w1300{
+                    @include res--w1380{
                         font-size: 11rem;
                     }
                     @include res--w1100{
@@ -425,7 +432,7 @@ section{
                     li{
                         font-size: 4rem; text-align: center; font-weight: 800; line-height: 1.5; transition: opacity .3s, transform 1s; mix-blend-mode: difference;  z-index: 2; @include font-pre; color: #fff;
                         word-break: keep-all; display: inline; height: auto;
-                        @include res--w1300{
+                        @include res--w1380{
                             font-size: 3.5rem;
                         }
                         @include res--w876{
@@ -503,7 +510,7 @@ section{
                 transparent 1px,
                 transparent 1px
             );
-            background-size: 100% 25.1%; opacity: 0;
+            background-size: 100% 25.1%;
             &.ani{
                 animation: textHidden 0.1s 1.7s forwards; 
             }
@@ -589,7 +596,7 @@ section{
                     font-size: clamp(1.5rem,17cqi,40rem); color: #fff; z-index: 1; @include font-lelig;
                     &.ani{
                         font-size: clamp(1.5rem,17cqi,13rem); 
-                        @include res--w1300{
+                        @include res--w1380{
                             font-size: 11rem;
                         }
                         @include res--w1100{

@@ -183,6 +183,13 @@ section {
   animation-delay: 0.5s;
   animation: revealLTR 1s 0.6s ease;
 }
+.index_wrapper .sec03_load_wrap .sec03_load:nth-child(2) {
+  left: 32.333%;
+  width: 35.333%;
+}
+.index_wrapper .sec03_load_wrap .sec03_load:nth-child(3) {
+  left: 66.666%;
+}
 .index_wrapper a, .index_wrapper button {
   cursor: none;
 }
@@ -526,7 +533,7 @@ section {
 .index_wrapper .container_wide .section2 .sec2_txt_wrap h2.sec2_video_txt1 {
   margin: 10vw 0 8vw;
 }
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1380px) {
   .index_wrapper .container_wide .section2 .sec2_txt_wrap h2 {
     font-size: 11rem;
   }
@@ -579,7 +586,7 @@ section {
   display: inline;
   height: auto;
 }
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1380px) {
   .index_wrapper .container_wide .section2 .sec2_txt_wrap ul li {
     font-size: 3.5rem;
   }
@@ -655,7 +662,6 @@ section {
   height: 50%;
   background-image: linear-gradient(0deg, var(--color0, rgba(0, 0, 0, 0.15)) 0.05rem, var(--color0, rgba(0, 0, 0, 0.15)) 0.05rem, transparent 1px, transparent 1px, var(--color0, rgba(0, 0, 0, 0.15)) 0.05rem, transparent 1px, transparent 25%, var(--color0, rgba(0, 0, 0, 0.15)) 0.05rem, transparent 1px, transparent 1px, var(--color0, rgba(0, 0, 0, 0.15)) 0.05rem, transparent 1px, transparent 50%, var(--color0, rgba(0, 0, 0, 0.15)) 0.05rem, transparent 1px, transparent 1px, var(--color0, rgba(0, 0, 0, 0.15)) 0.05rem, transparent 1px, transparent 75%, var(--color0, rgba(0, 0, 0, 0.15)) 0.05rem, transparent 1px, transparent 1px);
   background-size: 100% 25.1%;
-  opacity: 0;
 }
 .index_wrapper .container_wide .section3 .sec03_sticky.ani {
   animation: textHidden 0.1s 1.7s forwards;
@@ -806,7 +812,7 @@ section {
   font-size: clamp(1.5rem, 17cqi, 13rem);
   transition: all 0.6s ease-in;
 }
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1380px) {
   .index_wrapper .container_wide .section4 .sec04_sticky h2.ani {
     font-size: 11rem;
   }
@@ -1001,4 +1007,4 @@ section {
   opacity: 0.5;
   margin: 0;
   margin-top: 0.5rem;
-}/*# sourceMappingURL=style.css.map */
+}

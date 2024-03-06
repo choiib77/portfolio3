@@ -36,14 +36,14 @@ tagHover.forEach(element => {
 // 섹션1 버블
 document.addEventListener("mousemove", parallax);
 function parallax(e) {
-  this.querySelectorAll('.bubble').forEach(bubble => {
-    const speed = bubble.getAttribute('data-speed');
-    
-    const x = (window.innerWidth - e.pageX * speed)/100;
-    const y = (window.innerHeight - e.pageY * speed)/100;
-    
-    bubble.style.transform = `translateX(${x}px) translateY(${y}px)`;
-  })
+    this.querySelectorAll('.bubble').forEach(bubble => {
+        const speed = bubble.getAttribute('data-speed');
+        
+        const x = (window.innerWidth - e.pageX * speed)/100;
+        const y = (window.innerHeight - e.pageY * speed)/100;
+        
+        bubble.style.transform = `translateX(${x}px) translateY(${y}px)`;
+    })
 }
 
 // 섹션2 
@@ -113,20 +113,20 @@ let index_scroll = () => {
     }
 
     // 섹션3 프로젝트 영역 도달 시 로드 애니메이션
-    let section3 = document.querySelector('.section3');
-    let sec03_load = document.querySelectorAll('.sec03_load');
-    let sec03_top = section3.getBoundingClientRect().top - 700;
-    if (sec03_top <= -100) {
-        sec03_sticky.classList.add('ani')
-        sec03_load.forEach((load, index) => {
-            setTimeout(function () {
-                load.classList.add('ani');
-            }, index === 1 ? index * 300 : index * 100);
-            setTimeout(function () {
-                load.style.height = '0';
-            }, 2800);
-        });
-    }
+    // let section3 = document.querySelector('.section3');
+    // let sec03_load = document.querySelectorAll('.sec03_load');
+    // let sec03_top = section3.getBoundingClientRect().top - 700;
+    // if (sec03_top <= -100) {
+    //     sec03_sticky.classList.add('ani')
+    //     sec03_load.forEach((load, index) => {
+    //         setTimeout(function () {
+    //             load.classList.add('ani');
+    //         }, index === 1 ? index * 300 : index * 100);
+    //         setTimeout(function () {
+    //             load.style.height = '0';
+    //         }, 2800);
+    //     });
+    // }
 };
 
 
