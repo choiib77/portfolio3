@@ -255,21 +255,21 @@ section {
   /* sec5 */
   /* sec6 */
 }
-.index_wrapper .container_wide .seciton1 {
+.index_wrapper .container_wide .section1 {
   position: relative;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.index_wrapper .container_wide .seciton1 .sec1_keyword {
+.index_wrapper .container_wide .section1 .sec1_keyword {
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 10;
   mix-blend-mode: difference;
 }
-.index_wrapper .container_wide .seciton1 .sec1_keyword .bubble {
+.index_wrapper .container_wide .section1 .sec1_keyword .bubble {
   position: absolute;
   background: #fff;
   border-radius: 0.8rem;
@@ -282,18 +282,18 @@ section {
   transition: opactiy 0.3s;
 }
 @media screen and (max-width: 1100px) {
-  .index_wrapper .container_wide .seciton1 .sec1_keyword .bubble {
+  .index_wrapper .container_wide .section1 .sec1_keyword .bubble {
     font-size: 1.2rem;
     padding: 0.8rem;
   }
 }
 @media screen and (max-width: 600px) {
-  .index_wrapper .container_wide .seciton1 .sec1_keyword .bubble {
+  .index_wrapper .container_wide .section1 .sec1_keyword .bubble {
     font-size: 1rem;
     padding: 0.5rem;
   }
 }
-.index_wrapper .container_wide .seciton1 .sec1_keyword .bubble::after {
+.index_wrapper .container_wide .section1 .sec1_keyword .bubble::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -307,27 +307,27 @@ section {
   margin-left: -1rem;
   margin-bottom: -1rem;
 }
-.index_wrapper .container_wide .seciton1 .sec1_keyword .bubble.bub1 {
+.index_wrapper .container_wide .section1 .sec1_keyword .bubble.bub1 {
   top: 25%;
   right: 30%;
 }
 @media screen and (max-width: 1300px) {
-  .index_wrapper .container_wide .seciton1 .sec1_keyword .bubble.bub1 {
+  .index_wrapper .container_wide .section1 .sec1_keyword .bubble.bub1 {
     top: 14vw;
     right: 15vw;
   }
 }
 @media screen and (max-width: 600px) {
-  .index_wrapper .container_wide .seciton1 .sec1_keyword .bubble.bub1 {
+  .index_wrapper .container_wide .section1 .sec1_keyword .bubble.bub1 {
     top: 4vw;
     right: 11vw;
   }
 }
-.index_wrapper .container_wide .seciton1 .sec1_keyword .bubble.bub2 {
+.index_wrapper .container_wide .section1 .sec1_keyword .bubble.bub2 {
   bottom: 12%;
   left: 16%;
 }
-.index_wrapper .container_wide .seciton1 .sec1_keyword .bubble.bub2::after {
+.index_wrapper .container_wide .section1 .sec1_keyword .bubble.bub2::after {
   top: 0;
   left: 50%;
   border: 1rem solid transparent;
@@ -337,11 +337,11 @@ section {
   margin-left: -1rem;
   margin-top: -1rem;
 }
-.index_wrapper .container_wide .seciton1 .sec1_keyword .bubble.bub3 {
+.index_wrapper .container_wide .section1 .sec1_keyword .bubble.bub3 {
   top: 35%;
   left: 12%;
 }
-.index_wrapper .container_wide .seciton1 .sec1_keyword .bubble.bub3::after {
+.index_wrapper .container_wide .section1 .sec1_keyword .bubble.bub3::after {
   bottom: 0;
   left: 50%;
   border: 1rem solid transparent;
@@ -351,11 +351,11 @@ section {
   margin-left: -1rem;
   margin-bottom: -1rem;
 }
-.index_wrapper .container_wide .seciton1 .sec1_keyword .bubble.bub4 {
+.index_wrapper .container_wide .section1 .sec1_keyword .bubble.bub4 {
   bottom: 25%;
   right: 15%;
 }
-.index_wrapper .container_wide .seciton1 .sec1_keyword .bubble.bub4::after {
+.index_wrapper .container_wide .section1 .sec1_keyword .bubble.bub4::after {
   top: 0;
   left: 50%;
   border: 1rem solid transparent;
@@ -365,11 +365,11 @@ section {
   margin-left: -1rem;
   margin-top: -1rem;
 }
-.index_wrapper .container_wide .seciton1 .sec1_keyword .bubble.bub5 {
+.index_wrapper .container_wide .section1 .sec1_keyword .bubble.bub5 {
   top: 20%;
   right: 50%;
 }
-.index_wrapper .container_wide .seciton1 .sec1_keyword .bubble.bub5::after {
+.index_wrapper .container_wide .section1 .sec1_keyword .bubble.bub5::after {
   bottom: 0;
   left: 50%;
   border: 1rem solid transparent;
@@ -378,11 +378,11 @@ section {
   margin-left: -1rem;
   margin-bottom: -1rem;
 }
-.index_wrapper .container_wide .seciton1 .sec1_keyword .bubble.bub6 {
+.index_wrapper .container_wide .section1 .sec1_keyword .bubble.bub6 {
   bottom: 20%;
   right: 50%;
 }
-.index_wrapper .container_wide .seciton1 .sec1_keyword .bubble.bub6::after {
+.index_wrapper .container_wide .section1 .sec1_keyword .bubble.bub6::after {
   top: 0;
   left: 50%;
   border: 1rem solid transparent;
@@ -391,12 +391,12 @@ section {
   margin-left: -1rem;
   margin-top: -1rem;
 }
-.index_wrapper .container_wide .seciton1 .sec1_cont {
+.index_wrapper .container_wide .section1 .sec1_cont {
   width: 100%;
   text-align: center;
   background-color: #fff;
 }
-.index_wrapper .container_wide .seciton1 .sec1_cont h1 {
+.index_wrapper .container_wide .section1 .sec1_cont h1 {
   text-align: center;
   font-size: clamp(2rem, 28cqi, 40rem);
   line-height: 0.8;
@@ -404,7 +404,7 @@ section {
   display: inline-block;
   mix-blend-mode: difference;
 }
-.index_wrapper .container_wide .seciton1 .sec1_cont h1 span {
+.index_wrapper .container_wide .section1 .sec1_cont h1 span {
   display: inline-block;
   letter-spacing: -9rem;
   transform: translateY(100%) translateZ(0px);
@@ -413,18 +413,18 @@ section {
   color: #fff;
 }
 @media screen and (max-width: 1300px) {
-  .index_wrapper .container_wide .seciton1 .sec1_cont h1 span {
+  .index_wrapper .container_wide .section1 .sec1_cont h1 span {
     letter-spacing: -6rem;
   }
 }
 @media screen and (max-width: 876px) {
-  .index_wrapper .container_wide .seciton1 .sec1_cont h1 span {
+  .index_wrapper .container_wide .section1 .sec1_cont h1 span {
     letter-spacing: -4rem;
     font-size: clamp(2rem, 30cqi, 40rem);
   }
 }
 @media screen and (max-width: 600px) {
-  .index_wrapper .container_wide .seciton1 .sec1_cont h1 span {
+  .index_wrapper .container_wide .section1 .sec1_cont h1 span {
     letter-spacing: -2rem;
   }
 }
